@@ -12,104 +12,81 @@ import java.util.Scanner;
  * @author Jesus
  */
 public class Vistas {
-    public static Comando mostrarCamaras() {
-        Scanner teclado = new Scanner(System.in);
-        int numHabitacion;
-        int optCamSalon, optDormitorio, optDespacho;
-        boolean estadoCamSalon = false;
-        boolean estadoCamDormitorio = false;
-        boolean estadoCamDespacho = false;
 
+    private static Comando menuSalon() {
+        Scanner teclado = new Scanner(System.in);
+        int numAction;
+        int optLuz, optPersiana, optCam;
         do {
 
-            System.out.println("--CÁMARAS--");
-            System.out.println("1. Salón");
-            System.out.println("2. Dormitorio");
-            System.out.println("3. Despacho");
+            System.out.println("--SALON--");
+            System.out.println("1. Luces");
+            System.out.println("2. Persianas");
+            System.out.println("3. Cámaras");
             System.out.println("4. Salir");
-            System.out.print("Elige la habitación: ");
-            numHabitacion = teclado.nextInt();
-            switch (numHabitacion) {
+            System.out.print("Elige una acción: ");
+            numAction = teclado.nextInt();
+            switch (numAction) {
                 case 1:
                     do {
 
-                        System.out.println("-- CÁMARA DEL SALÓN--");
-                        System.out.println("1. Consultar Cámara");
-                        if (estadoCamSalon) {
-                            System.out.println("2. Apagar Cámara");
-                        } else {
-                            System.out.println("2. Encender Cámara");
-                        }
-                        System.out.println("3. Salir");
-                        optCamSalon = teclado.nextInt();
-                        switch (optCamSalon) {
+                        System.out.println("-- Luces del Salón--");
+                        System.out.println("1. Consultar Luz");
+                        System.out.println("2. Encender Luz");
+                        System.out.println("3. Apagar Luz");
+                        System.out.println("4. Salir");
+                        optLuz = teclado.nextInt();
+                        switch (optLuz) {
                             case 1:
-                                return Comando.CONSULTAR_CAMARA_SALON;
-
+                                return Comando.CONSULTAR_LUZ_SALON;
                             case 2:
-                                if (estadoCamSalon) {
-                                    return Comando.APAGAR_CAMARA_SALON;
-                                } else {
-                                    return Comando.ENCENDER_CAMARA_SALON;
-                                }
+                                return Comando.ENCENDER_LUZ_SALON;
+                            case 3:
+                                return Comando.APAGAR_LUZ_SALON;
                         }
-
-                    } while (!(optCamSalon == 3));
+                    } while (!(optLuz == 4));
                     break;
                 case 2:
                     do {
 
-                        System.out.println("-- CÁMARA DEL DORMITORIO--");
-                        System.out.println("1. Consultar Cámara");
-                        if (estadoCamDormitorio) {
-                            System.out.println("2. Apagar Cámara");
-                        } else {
-                            System.out.println("2. Encender Cámara");
-                        }
-                        System.out.println("3. Salir");
-                        optDormitorio = teclado.nextInt();
-                        switch (optDormitorio) {
+                        System.out.println("-- Persianas del salon--");
+                        System.out.println("1. Consultar persiana");
+                        System.out.println("2. Subir persiana");
+                        System.out.println("3. Bajar persiana");
+                        System.out.println("4. Salir");
+                        optPersiana = teclado.nextInt();
+                        switch (optPersiana) {
                             case 1:
-                                return Comando.CONSULTAR_CAMARA_DORMITORIO;
+                                return Comando.CONSULTAR_PERSIANA_SALON;
                             case 2:
-                                if (estadoCamDormitorio) {
-                                   return Comando.APAGAR_CAMARA_DORMITORIO;
-                                } else {
-                                   return Comando.ENCENDER_CAMARA_DORMITORIO;
-                                }
+                                return Comando.SUBIR_PERSIANA_SALON;
+                            case 3:
+                                return Comando.BAJAR_PERSIANA_SALON;
                         }
-
-                    } while (!(optDormitorio == 3));
+                        break;
+                    } while (!(optPersiana == 4));
                     break;
                 case 3:
                     do {
-
-                        System.out.println("-- CÁMARA DEL DESPACHO--");
+                        System.out.println("-- Cámaras del salón--");
                         System.out.println("1. Consultar Cámara");
-                        if (estadoCamDormitorio) {
-                            System.out.println("2. Apagar Cámara");
-                        } else {
-                            System.out.println("2. Encender Cámara");
-                        }
-                        System.out.println("3. Salir");
-                        optDespacho = teclado.nextInt();
-                        switch (optDespacho) {
+                        System.out.println("2. Apagar Cámara");
+                        System.out.println("3. Encender Cámara");
+                        System.out.println("4. Salir");
+                        optCam = teclado.nextInt();
+                        switch (optCam) {
                             case 1:
-                                return Comando.CONSULTAR_CAMARA_DESPACHO;
+                                return Comando.CONSULTAR_CAMARA_SALON;
                             case 2:
-                                if (estadoCamDespacho) {
-                                return Comando.APAGAR_CAMARA_DESPACHO;
-                                } else {
-                                return Comando.ENCENDER_CAMARA_DESPACHO;
-                                }
+                                return Comando.ENCENDER_CAMARA_SALON;
+                            case 3:
+                                return Comando.APAGAR_CAMARA_SALON;
                         }
 
-                    } while (!(optDespacho == 3));
+                    } while (!(optCam == 4));
                     break;
-                case 4:
-                    return Comando.APAGAR_SISTEMA;
             }
-        } while (!(numHabitacion == 4));
+        } while (!(numAction == 4));
         return null;
     }
 }
