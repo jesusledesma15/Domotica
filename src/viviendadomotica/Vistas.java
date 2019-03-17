@@ -6,12 +6,31 @@
 package viviendadomotica;
 
 import java.util.Scanner;
+import javax.swing.JOptionPane;
 
 /**
  *
  * @author Jesus
  */
 public class Vistas {
+    
+        public static void menu() {
+        String usuario = "jesus889";
+        String contrasenia = "123abc";
+        String user;
+        String password;
+        System.out.println("¡BIENVENIDO!");
+        do {
+            user = JOptionPane.showInputDialog("Usuario: ");
+            password = JOptionPane.showInputDialog("Constraseña");
+            if (!user.equals(usuario) || !password.equals(contrasenia)) {
+                JOptionPane.showMessageDialog(null, "El usuario no existe o la constraseña es incorrecta");
+            }
+            
+        } while (!user.equals(usuario) || !password.equals(contrasenia));
+        menuDomotica();
+        
+    }
     
     private static void menuDomotica() {
         Scanner teclado = new Scanner(System.in);
