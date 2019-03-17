@@ -267,4 +267,27 @@ public class Vistas {
         return null;
     }
     
+        private static Comando menuSistema() {
+        Scanner teclado = new Scanner(System.in);
+        int numAction = 0;
+        do {
+            System.out.println("--SISTEMA--");
+            System.out.println("1. Consultar hora");
+            System.out.println("2. Cambiar hora");
+            System.out.println("3. Apagar sistema");
+            System.out.println("4. Salir");
+            System.out.print("Elige una acción: ");
+            numAction = teclado.nextInt();
+            switch (numAction) {
+                case 1:
+                    return Comando.CONSULTAR_HORA;
+                case 2:
+                    return Comando.MODIFICAR_HORA;
+                case 3:
+                    return Comando.APAGAR_SISTEMA;
+            }
+            
+        } while (numAction != 4);
+        return null;
+    }
 }
