@@ -12,6 +12,46 @@ import java.util.Scanner;
  * @author Jesus
  */
 public class Vistas {
+    
+    private static void menuDomotica() {
+        Scanner teclado = new Scanner(System.in);
+        int numAction = 0;
+        do {
+            System.out.println("--MENÚ DE LA DOMOTICA--");
+            System.out.println("1. Salón");
+            System.out.println("2. Dormitorio");
+            System.out.println("3. Despacho");
+            System.out.println("4. Garaje");
+            System.out.println("5. Sistema");
+            System.out.println("6. Salir");
+            System.out.print("Elige una habitación: ");
+            numAction = teclado.nextInt();
+            if (numAction < 1 || numAction > 6) {
+                System.out.println("Elija una opción válida");
+            }
+            
+            switch (numAction) {
+                case 1:
+                    menuSalon();
+                    break;
+                case 2:
+                    menuDormitorio();
+                    break;
+                case 3:
+                    menuDespacho();
+                    break;
+                case 4:
+                    menuGaraje();
+                    break;
+                case 5:
+                    menuSistema();
+                    break;
+                case 6:
+                    System.out.println("Has elejido salir del menú");
+            }
+            
+        } while (numAction != 6);
+    }
 
     private static Comando menuSalon() {
         Scanner teclado = new Scanner(System.in);
