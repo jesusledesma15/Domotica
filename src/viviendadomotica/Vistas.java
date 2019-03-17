@@ -243,4 +243,28 @@ public class Vistas {
         } while (!(numAction == 4));
         return null;
     }
+    
+    private static Comando menuGaraje() {
+        Scanner teclado = new Scanner(System.in);
+        int numAction;
+        do {
+            System.out.println("--GARAJE--");
+            System.out.println("1. Consultar puerta");
+            System.out.println("2. Abrir puerta");
+            System.out.println("3. Cerrar puerta");
+            System.out.println("4. Salir");
+            System.out.print("Elige una acción: ");
+            numAction = teclado.nextInt();
+            switch (numAction) {
+                case 1:
+                    return Comando.CONSULTAR_PUERTA_GARAJE;
+                case 2:
+                    return Comando.ABRIR_PUERTA_GARAJE;
+                case 3:
+                    return Comando.CERRAR_PUERTA_GARAJE;
+            }
+        } while (!(numAction == 4));
+        return null;
+    }
+    
 }
