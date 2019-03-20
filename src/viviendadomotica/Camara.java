@@ -19,6 +19,11 @@ class Camara {
         this.ip = ip;
     }
 
+    public Camara() {
+        this.estado = false;
+        this.ip = "192.168.1.122";
+    }
+
     
     public void encenderCamara(){
          if (!this.estado) {
