@@ -6,6 +6,7 @@
 package viviendadomotica;
 
 import java.time.LocalDate;
+import java.time.LocalTime;
 
 /**
  *
@@ -29,6 +30,115 @@ public class Centralita {
         fechaInstalacion = fechaInstalacion;
         id = id;
     }
+    
+    public void ejecutarOrden(Comando comando) {
+
+        switch (comando) {
+
+            case APAGAR_SISTEMA:
+
+                break;
+            case CONSULTAR_HORA:
+                Reloj.getHora();
+                break;
+            case MODIFICAR_HORA:
+                Reloj.setHora(LocalTime.NOON);
+                break;
+            case CONSULTAR_PUERTA_GARAJE:
+                
+                break;
+            case ABRIR_PUERTA_GARAJE:
+
+                break;
+            case CERRAR_PUERTA_GARAJE:
+
+                break;
+            case CONSULTAR_PERSIANA_SALON:
+                
+                break;
+
+            case SUBIR_PERSIANA_SALON:
+                break;
+
+            case BAJAR_PERSIANA_SALON:
+                break;
+
+            case CONSULTAR_LUZ_SALON:
+                break;
+
+            case ENCENDER_LUZ_SALON:
+                break;
+
+            case APAGAR_LUZ_SALON:
+                
+                break;
+
+            case CONSULTAR_CAMARA_SALON:
+                break;
+
+            case ENCENDER_CAMARA_SALON:
+                break;
+
+            case APAGAR_CAMARA_SALON:
+                
+                break;
+            case CONSULTAR_PERSIANA_DORMITORIO:
+                
+                break;
+            case SUBIR_PERSIANA_DORMITORIO:
+                
+                break;
+            case BAJAR_PERSIANA_DORMITORIO:
+                
+                break;
+            case CONSULTAR_CAMARA_DORMITORIO:
+                
+                break;
+            case ENCENDER_CAMARA_DORMITORIO:
+                
+                break;
+                
+            case APAGAR_CAMARA_DORMITORIO:
+                
+                break;
+            case CONSULTAR_LUZ_DORMITORIO:
+                
+                break;
+            case ENCENDER_LUZ_DORMITORIO:
+                
+                break;
+   
+            case APAGAR_LUZ_DORMITORIO:
+
+                break;
+
+            case CONSULTAR_PERSIANA_DESPACHO:
+                break;
+            case SUBIR_PERSIANA_DESPACHO:
+                break;
+            case BAJAR_PERSIANA_DESPACHO:
+                break;
+            case CONSULTAR_CAMARA_DESPACHO:
+                break;
+            case ENCENDER_CAMARA_DESPACHO:
+                break;
+            case APAGAR_CAMARA_DESPACHO:
+                break;
+            case CONSULTAR_LUZ_DESPACHO:
+                break;
+            case ENCENDER_LUZ_DESPACHO:
+                break;
+            case APAGAR_LUZ_DESPACHO:
+                break;
+            case APAGADO_GENERAL:
+                break;
+            case APAGADO_ECO:
+                break;
+
+        }
+
+    }
+
     
     public boolean comprobarUsuario(Usuario aux){
         
