@@ -19,10 +19,15 @@ public class Habitacion extends Estancia {
 
     public Habitacion(Luz luz, Persiana persiana, Camara camara, int m2) {
         super(m2);
-        this.luz = luz;
-        this.persiana = persiana;
-        this.camara = camara;
+        this.luz = new Luz();
+        this.persiana = new Persiana();
+        this.camara = new Camara();
     }
+
+    public Habitacion() {
+        
+    }
+    
     
     public void apagarLuzGeneral(){
         luz.apagarLuz();        
