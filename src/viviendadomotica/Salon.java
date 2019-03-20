@@ -18,6 +18,12 @@ public class Salon extends Habitacion{
         this.terraza = terraza;
     }
 
+    public Salon() {
+
+    }
+    
+    
+
     public boolean isTerraza() {
         return terraza;
     }
