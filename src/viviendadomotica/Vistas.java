@@ -6,33 +6,14 @@
 package viviendadomotica;
 
 import java.util.Scanner;
-import javax.swing.JOptionPane;
 
 /**
  *
  * @author Jesus
  */
 public class Vistas {
-    
-        public static void menu() {
-        String usuario = "jesus889";
-        String contrasenia = "123abc";
-        String user;
-        String password;
-        System.out.println("¡BIENVENIDO!");
-        do {
-            user = JOptionPane.showInputDialog("Usuario: ");
-            password = JOptionPane.showInputDialog("Constraseña");
-            if (!user.equals(usuario) || !password.equals(contrasenia)) {
-                JOptionPane.showMessageDialog(null, "El usuario no existe o la constraseña es incorrecta");
-            }
-            
-        } while (!user.equals(usuario) || !password.equals(contrasenia));
-        menuDomotica();
-        
-    }
-    
-    private static void menuDomotica() {
+
+    public static void menu() {
         Scanner teclado = new Scanner(System.in);
         int numAction = 0;
         do {
@@ -48,7 +29,7 @@ public class Vistas {
             if (numAction < 1 || numAction > 6) {
                 System.out.println("Elija una opción válida");
             }
-            
+
             switch (numAction) {
                 case 1:
                     menuSalon();
@@ -66,9 +47,9 @@ public class Vistas {
                     menuSistema();
                     break;
                 case 6:
-                    System.out.println("Has elejido salir del menú");
+                    System.out.println("Has elejido salir del sistema");
             }
-            
+
         } while (numAction != 6);
     }
 
@@ -101,7 +82,7 @@ public class Vistas {
                             case 2:
                                 return Comando.ENCENDER_LUZ_SALON;
                             case 3:
-                                return Comando.APAGAR_LUZ_SALON;
+                                apagadoLuz();
                         }
                     } while (!(optLuz == 4));
                     break;
@@ -148,13 +129,13 @@ public class Vistas {
         } while (!(numAction == 4));
         return null;
     }
-    
+
     private static Comando menuDormitorio() {
         Scanner teclado = new Scanner(System.in);
         int numAction;
         int optLuz, optPersiana, optCam;
         do {
-            
+
             System.out.println("--DORMITORIO--");
             System.out.println("1. Luces");
             System.out.println("2. Persianas");
@@ -165,7 +146,7 @@ public class Vistas {
             switch (numAction) {
                 case 1:
                     do {
-                        
+
                         System.out.println("-- Luces del Dormitorio--");
                         System.out.println("1. Consultar Luz");
                         System.out.println("2. Encender Luz");
@@ -178,13 +159,13 @@ public class Vistas {
                             case 2:
                                 return Comando.ENCENDER_LUZ_DORMITORIO;
                             case 3:
-                                return Comando.APAGAR_LUZ_DORMITORIO;
+                                apagadoLuz();
                         }
                     } while (!(optLuz == 4));
                     break;
                 case 2:
                     do {
-                        
+
                         System.out.println("-- Persianas del dormitorio--");
                         System.out.println("1. Consultar persiana");
                         System.out.println("2. Subir persiana");
@@ -218,20 +199,20 @@ public class Vistas {
                             case 3:
                                 return Comando.APAGAR_CAMARA_DORMITORIO;
                         }
-                        
+
                     } while (!(optCam == 4));
                     break;
             }
         } while (!(numAction == 4));
         return null;
     }
-    
+
     private static Comando menuDespacho() {
         Scanner teclado = new Scanner(System.in);
         int numAction;
         int optLuz, optPersiana, optCam;
         do {
-            
+
             System.out.println("--DESPACHO--");
             System.out.println("1. Luces");
             System.out.println("2. Persianas");
@@ -242,7 +223,7 @@ public class Vistas {
             switch (numAction) {
                 case 1:
                     do {
-                        
+
                         System.out.println("-- Luces del despacho--");
                         System.out.println("1. Consultar Luz");
                         System.out.println("2. Encender Luz");
@@ -255,13 +236,13 @@ public class Vistas {
                             case 2:
                                 return Comando.ENCENDER_LUZ_DESPACHO;
                             case 3:
-                                return Comando.APAGAR_LUZ_DESPACHO;
+                                apagadoLuz();
                         }
                     } while (!(optLuz == 4));
                     break;
                 case 2:
                     do {
-                        
+
                         System.out.println("-- Persianas del despacho--");
                         System.out.println("1. Consultar persiana");
                         System.out.println("2. Subir persiana");
@@ -295,14 +276,14 @@ public class Vistas {
                             case 3:
                                 return Comando.APAGAR_CAMARA_DESPACHO;
                         }
-                        
+
                     } while (!(optCam == 4));
                     break;
             }
         } while (!(numAction == 4));
         return null;
     }
-    
+
     private static Comando menuGaraje() {
         Scanner teclado = new Scanner(System.in);
         int numAction;
@@ -325,8 +306,8 @@ public class Vistas {
         } while (!(numAction == 4));
         return null;
     }
-    
-        private static Comando menuSistema() {
+
+    private static Comando menuSistema() {
         Scanner teclado = new Scanner(System.in);
         int numAction = 0;
         do {
@@ -345,8 +326,27 @@ public class Vistas {
                 case 3:
                     return Comando.APAGAR_SISTEMA;
             }
-            
+
         } while (numAction != 4);
+        return null;
+    }
+
+    private static Comando apagadoLuz() {
+        Scanner teclado = new Scanner(System.in);
+        System.out.println("1. Apagado normal");
+        System.out.println("2. Apagado general");
+        System.out.println("3. Apagado eco");
+        System.out.println("Indique el tipo de apagado");
+        int tipoApagado = teclado.nextInt();
+        switch (tipoApagado) {
+            case 1:
+                return Comando.APAGAR_LUZ_SALON;
+            case 2:
+                return Comando.APAGADO_GENERAL;
+            case 3:
+                return Comando.APAGADO_ECO;
+
+        }
         return null;
     }
 }
