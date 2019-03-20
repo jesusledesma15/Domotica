@@ -3,7 +3,7 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package domo;
+package viviendadomotica;
 
 /**
  *
@@ -11,23 +11,41 @@ package domo;
  */
 class Persiana {
 
-    private boolean estado;
+    private int estado;
     private int largo, ancho; //cm
 
-    public Persiana(boolean estado, int largo, int ancho) {
+    public Persiana(int estado, int largo, int ancho) {
         this.estado = estado;
         this.largo = largo;
         this.ancho = ancho;
+    }
+    
+        public void mediaPersiana(){
+         if (this.estado != 2) {
+             this.estado = 2;            
+        }
+    }
+    
+        public void bajarPersiana(){
+         if (this.estado != 0) {
+             this.estado = 0;            
+        }
+    }
+    
+    public void subirPersiana(){
+         if (this.estado != 1) {
+             this.estado = 1;            
+        }
     }
 
     public Persiana() {
     }
 
-    public boolean isEstado() {
+    public int isEstado() {
         return estado;
     }
 
-    public void setEstado(boolean estado) {
+    public void setEstado(int estado) {
         this.estado = estado;
     }
 
