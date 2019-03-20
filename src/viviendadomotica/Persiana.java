@@ -19,22 +19,22 @@ class Persiana {
         this.largo = largo;
         this.ancho = ancho;
     }
-    
-        public void mediaPersiana(){
-         if (this.estado != 2) {
-             this.estado = 2;            
+
+    public void mediaPersiana() {
+        if (this.estado != 2) {
+            this.estado = 2;
         }
     }
-    
-        public void bajarPersiana(){
-         if (this.estado != 0) {
-             this.estado = 0;            
+
+    public void bajarPersiana() {
+        if (this.estado != 0) {
+            this.estado = 0;
         }
     }
-    
-    public void subirPersiana(){
-         if (this.estado != 1) {
-             this.estado = 1;            
+
+    public void subirPersiana() {
+        if (this.estado != 1) {
+            this.estado = 1;
         }
     }
 
