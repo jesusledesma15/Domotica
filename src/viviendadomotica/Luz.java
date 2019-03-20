@@ -18,6 +18,10 @@ class Luz {
         this.estado = estado;
         this.consumo = consumo;
     }
+        public Luz() {
+        this.estado = false;
+        this.consumo = 80.5;
+    }
 
     public void encenderLuz() {
         if (!estado) {
