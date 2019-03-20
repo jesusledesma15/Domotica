@@ -3,14 +3,16 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package domo;
+package viviendadomotica;
+
+import java.time.LocalTime;
 
 /**
  *
  * @author salva
  */
-public class Habitacion extends Estancia{
-    
+public class Habitacion extends Estancia {
+
     private Luz luz;
     private Persiana persiana;
     private Camara camara;
@@ -21,10 +23,25 @@ public class Habitacion extends Estancia{
         this.persiana = persiana;
         this.camara = camara;
     }
+    
+    public void apagarLuzGeneral(){
+        luz.apagarLuz();        
+    }
 
+    public void apagadoEco(){
+        LocalTime ahora = LocalTime.now();
+        if (luz.isEstado() && ahora.getHour() < 18 && ahora.getHour() > 8) {
+            luz.setEstado(false);
+            System.out.println("Apagado ECO activado");
+        }
+        else{
+            System.out.println("No es posible activar el apagado ECO");
+        }
+    }
     public Luz getLuz() {
         return luz;
     }
+    
 
     public void setLuz(Luz luz) {
         this.luz = luz;
@@ -46,13 +63,10 @@ public class Habitacion extends Estancia{
         this.camara = camara;
     }
 
-    @Override
     public String toString() {
         return super.toString()+"Habitacion{" + "luz=" + luz + ", persiana=" + persiana + ", camara=" + camara + '}';
     }
+
     
-    
-    
-    
-    
+
 }
