@@ -3,7 +3,7 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package domo;
+package viviendadomotica;
 
 /**
  *
@@ -16,6 +16,18 @@ public class PuertaAutomatica {
     
     //java crea un constructor por defecto, si no implementamos ninguno
 
+    public void cerrarPuerta(){
+        if (estado) {
+            estado = false;
+        }        
+    }
+    
+    public void abrirPuerta(){
+        if (!estado) {
+            estado = true;
+        }        
+    }
+    
     public boolean isEstado() {
         return estado;
     }
@@ -35,10 +47,6 @@ public class PuertaAutomatica {
     @Override
     public String toString() {
         return "PuertaAutomatica{" + "estado=" + estado + ", retardo=" + retardo + '}';
-    }
-    
-    
-    
-    
-    
+    } 
+ 
 }
