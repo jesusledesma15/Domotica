@@ -50,7 +50,10 @@ public enum Comando {
     APAGAR_CAMARA_DESPACHO(30, "Apagar cámara del despacho"),
     CONSULTAR_LUZ_DESPACHO(31, "Consultar persiana del despacho"),
     ENCENDER_LUZ_DESPACHO(32, "Encender luz del despacho"),
-    APAGAR_LUZ_DESPACHO(33, "Apagar luz del despacho");
+    APAGAR_LUZ_DESPACHO(33, "Apagar luz del despacho"),
+    APAGADO_GENERAL (34, "Apagado general"),
+    APAGADO_ECO (35, "Apagado general");
+    
     /*                
                
              
@@ -73,5 +76,4 @@ public enum Comando {
         return this.descripcion;
     }
 }
-
 
