@@ -18,6 +18,14 @@ public class Dormitorio extends Habitacion{
         this.ori = ori;
     }
 
+    public Dormitorio() {
+        
+    }
+    
+    
+
+
+
     public Orientacion getOri() {
         return ori;
     }
