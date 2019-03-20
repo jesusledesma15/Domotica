@@ -3,20 +3,33 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package domo;
+package viviendadomotica;
 
 /**
  *
  * @author salva
  */
 class Luz {
-    
+
     private boolean estado;
     private double consumo;
 
     public Luz(boolean estado, double consumo) {
         this.estado = estado;
         this.consumo = consumo;
+    }
+
+    public void encenderLuz() {
+        if (!estado) {
+            estado = true;
+        }
+    }
+    
+    public void apagarLuz() {
+        if (estado) {
+            estado = false;
+            
+        }
     }
 
     public boolean isEstado() {
@@ -39,8 +52,5 @@ class Luz {
     public String toString() {
         return "Luz{" + "estado=" + estado + ", consumo=" + consumo + '}';
     }
-    
-    
-    
-    
+
 }
