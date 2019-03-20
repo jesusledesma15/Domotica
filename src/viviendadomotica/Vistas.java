@@ -13,6 +13,20 @@ import java.util.Scanner;
  */
 public class Vistas {
 
+     public static Usuario login(){
+            Scanner teclado=new Scanner(System.in);
+
+            Usuario log=new Usuario("Jesus", "123J");
+            
+            System.out.println("Introduce tu nombre de usuario");
+            log.setUser(teclado.nextLine());
+            
+            System.out.println("Introduce tu contraseña de usuario");
+            log.setPassword(teclado.nextLine());            
+            
+            return log;
+        }
+     
     public static void menu() {
         Scanner teclado = new Scanner(System.in);
         int numAction = 0;
