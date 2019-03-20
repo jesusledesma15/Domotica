@@ -3,7 +3,7 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package domo;
+package viviendadomotica;
 
 /**
  *
@@ -19,6 +19,18 @@ class Camara {
         this.ip = ip;
     }
 
+    
+    public void encenderCamara(){
+         if (!this.estado) {
+             this.estado = true;            
+        }
+    }
+    
+    public void apagarCamara(){
+         if (this.estado) {
+             this.estado = false;            
+        }
+    }
     public boolean isEstado() {
         return estado;
     }
