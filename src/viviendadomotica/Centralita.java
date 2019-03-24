@@ -8,6 +8,8 @@ package Domotica;
 import java.time.LocalDate;
 import java.time.LocalTime;
 import viviendadomotica.Reloj;
+import viviendadomotica.Salon;
+import viviendadomotica.Usuario;
 
 /**
  *
@@ -158,16 +160,280 @@ public class Centralita {
 
     }
     
-    public boolean comprobarUsuario(Usuario aux){
-        
+       //MÉTODOS PARA EL SALON
+    //LUCES
+    public void encenderLuzSalon() {
+        if (!salon.getLuz().isEstado()) {
+            salon.getLuz().setEstado(true);
+            System.out.println("Luz del salon encendida");
+        }
+    }
+
+    public void apagarLuzSalon() {
+        if (!salon.getLuz().isEstado()) {
+            salon.getLuz().setEstado(false);
+            System.out.println("Luz del salon apagada");
+        }
+    }
+
+    public void consutarLuzSalon() {
+        System.out.println("La luz del salon está " + salon.getLuz().isEstado());
+    }
+
+    //PERSIANAS
+    public void mediaPersianaSalon() {
+        if (this.salon.getPersiana().isEstado() != 2) {
+            this.salon.getPersiana().setEstado(2);
+            System.out.println("La persiana del salon ha sido puesta a media altura");
+        }
+    }
+
+    public void bajarPersianaSalon() {
+        if (this.salon.getPersiana().isEstado() != 0) {
+            this.salon.getPersiana().setEstado(0);
+            System.out.println("Persiana del salon bajada");
+        }
+    }
+
+    public void subirPersianaSalon() {
+        if (this.salon.getPersiana().isEstado() != 1) {
+            this.salon.getPersiana().setEstado(1);
+            System.out.println("Persiana del salon subida");
+        }
+    }
+
+    public void consutarPersianaSalon() {
+        System.out.println("La persiana del salon está " + salon.getPersiana().isEstado());
+    }
+
+    //CAMARAS
+    public void encenderCamaraSalon() {
+        if (!this.salon.getCamara().isEstado()) {
+            this.salon.getCamara().setEstado(true);
+            System.out.println("Cámara del salon encendida");
+        }
+    }
+
+    public void apagarCamaraSalon() {
+        if (this.salon.getCamara().isEstado()) {
+            this.salon.getCamara().setEstado(false);
+            System.out.println("Cámara del salon apagada");
+        }
+    }
+
+    public void consutarCamaraSalon() {
+        System.out.println("La Camara del salon está " + salon.getCamara().isEstado());
+    }
+
+    //MÉTODOS PARA EL DORMITORIO
+    //LUCES
+    public void encenderLuzDormitorio() {
+        if (!dormitorio.getLuz().isEstado()) {
+            dormitorio.getLuz().setEstado(true);
+            System.out.println("Luz del dormitorio encendida");
+        }
+    }
+
+    public void apagarLuzDormitorio() {
+        if (!dormitorio.getLuz().isEstado()) {
+            dormitorio.getLuz().setEstado(false);
+            System.out.println("Luz del dormitorio apagada");
+        }
+    }
+
+    public void consutarLuzDormitorio() {
+        System.out.println("La luz del dormitorio está " + dormitorio.getLuz().isEstado());
+    }
+
+    //PERSIANAS
+    public void mediaPersianaDormitorio() {
+        if (this.dormitorio.getPersiana().isEstado() != 2) {
+            this.dormitorio.getPersiana().setEstado(2);
+            System.out.println("La persiana del dormitorio ha sido puesta a media altura");
+        }
+    }
+
+    public void bajarPersianaDormitorio() {
+        if (this.dormitorio.getPersiana().isEstado() != 0) {
+            this.dormitorio.getPersiana().setEstado(0);
+            System.out.println("Persiana del dormitorio bajada");
+        }
+    }
+
+    public void subirPersianaDormitorio() {
+        if (this.dormitorio.getPersiana().isEstado() != 1) {
+            this.dormitorio.getPersiana().setEstado(1);
+            System.out.println("Persiana del dormitorio subida");
+        }
+    }
+
+    public void consutarPersianaDormitorio() {
+        System.out.println("La persiana del dormitorio está " + dormitorio.getPersiana().isEstado());
+    }
+
+    //CAMARAS
+    public void encenderCamaraDormitorio() {
+        if (!this.dormitorio.getCamara().isEstado()) {
+            this.dormitorio.getCamara().setEstado(true);
+            System.out.println("Cámara del dormitorio encendida");
+        }
+    }
+
+    public void apagarCamaraDormitorio() {
+        if (this.dormitorio.getCamara().isEstado()) {
+            this.dormitorio.getCamara().setEstado(false);
+            System.out.println("Cámara del dormitorio apagada");
+        }
+    }
+
+    public void consutarCamaraDormitorio() {
+        System.out.println("La Camara del dormitorio está " + dormitorio.getCamara().isEstado());
+    }
+
+    //MÉTODOS PARA EL DESPACHO
+    //LUCES
+    public void encenderLuzDespacho() {
+        if (!despacho.getLuz().isEstado()) {
+            despacho.getLuz().setEstado(true);
+            System.out.println("Luz del despacho encendida");
+        }
+    }
+
+    public void apagarLuzDespacho() {
+        if (!despacho.getLuz().isEstado()) {
+            despacho.getLuz().setEstado(false);
+            System.out.println("Luz del despacho apagada");
+        }
+    }
+
+    public void consutarLuzDespacho() {
+        System.out.println("La luz del despacho está " + despacho.getLuz().isEstado());
+    }
+
+    //PERSIANAS
+    public void mediaPersianaDespacho() {
+        if (this.despacho.getPersiana().isEstado() != 2) {
+            this.despacho.getPersiana().setEstado(2);
+            System.out.println("La persiana del despacho ha sido puesta a media altura");
+        }
+    }
+
+    public void bajarPersianaDespacho() {
+        if (this.despacho.getPersiana().isEstado() != 0) {
+            this.despacho.getPersiana().setEstado(0);
+            System.out.println("Persiana del despacho bajada");
+        }
+    }
+
+    public void subirPersianaDespacho() {
+        if (this.despacho.getPersiana().isEstado() != 1) {
+            this.despacho.getPersiana().setEstado(1);
+            System.out.println("Persiana del despacho subida");
+        }
+    }
+
+    public void consutarPersianaDespacho() {
+        System.out.println("La persiana del despacho está " + despacho.getPersiana().isEstado());
+    }
+
+    //CAMARAS
+    public void encenderCamaraDespacho() {
+        if (!this.despacho.getCamara().isEstado()) {
+            this.despacho.getCamara().setEstado(true);
+            System.out.println("Cámara del despacho encendida");
+        }
+    }
+
+    public void apagarCamaraDespacho() {
+        if (this.despacho.getCamara().isEstado()) {
+            this.despacho.getCamara().setEstado(false);
+            System.out.println("Cámara del despacho apagada");
+        }
+    }
+
+    public void consutarCamaraDespacho() {
+        System.out.println("La Camara del despacho está " + despacho.getCamara().isEstado());
+    }
+
+    //GARAJE
+    public void abrirGaraje() {
+        if (!garaje.getPuerta().isEstado()) {
+            garaje.getPuerta().setEstado(true);
+            System.out.println("Puerta del garaje abierta");
+        }
+    }
+
+    public void cerrarGaraje() {
+        if (garaje.getPuerta().isEstado()) {
+            garaje.getPuerta().setEstado(false);
+            System.out.println("Puerta del garaje cerrada");
+        }
+    }
+
+    public void consutarPuertaGaraje() {
+        System.out.println("La puerta del garaje está " + garaje.getPuerta().isEstado());
+    }
+
+    //METODOS HORAS
+    public void consultarHora() {
+
+    }
+
+    public void modificarHora() {
+
+    }
+
+    //MÉTODOS FECHA
+    public void consultarFecha() {
+
+    }
+
+    public void modificarFecha() {
+
+    }
+
+    //MÉTODOS GENERALLES
+    public void apagadoGeneral() {
+        if (salon.getLuz().isEstado()) {
+            salon.getLuz().setEstado(false);
+        }
+        if (dormitorio.getLuz().isEstado()) {
+            dormitorio.getLuz().setEstado(false);
+        }
+        if (despacho.getLuz().isEstado()) {
+            despacho.getLuz().setEstado(false);
+        }
+    }
+
+    public void apagadoEco() {
+        LocalTime ahora = LocalTime.now();
+        if (salon.getLuz().isEstado() == true && ahora.getHour() < 18 && ahora.getHour() > 8
+                && salon.getPersiana().isEstado() == 1) {
+            salon.getLuz().setEstado(false);
+            System.out.println("Luz del salon apagada");
+        }
+        if (dormitorio.getLuz().isEstado() == true && ahora.getHour() < 18 && ahora.getHour() > 8
+                && dormitorio.getPersiana().isEstado() == 1) {
+            dormitorio.getLuz().setEstado(false);
+            System.out.println("Luz del dormitorio apagada");
+        }
+        if (despacho.getLuz().isEstado() == true && ahora.getHour() < 18 && ahora.getHour() > 8
+                && despacho.getPersiana().isEstado() == 1) {
+            despacho.getLuz().setEstado(false);
+            System.out.println("Luz del despacho apagada");
+        }
+    }
+
+    public boolean comprobarUsuario(Usuario aux) {
+
         return user.equals(aux);
     }
 
-    public Garaje getGaraje() {
+    public viviendadomotica.Garaje getGaraje() {
         return garaje;
     }
 
-    public void setGaraje(Garaje garaje) {
+    public void setGaraje(viviendadomotica.Garaje garaje) {
         garaje = garaje;
     }
 
@@ -179,11 +445,11 @@ public class Centralita {
         salon = salon;
     }
 
-    public Dormitorio getDormitorio() {
+    public viviendadomotica.Dormitorio getDormitorio() {
         return dormitorio;
     }
 
-    public void setDormitorio(Dormitorio dormitorio) {
+    public void setDormitorio(viviendadomotica.Dormitorio dormitorio) {
         dormitorio = dormitorio;
     }
 
