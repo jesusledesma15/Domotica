@@ -3,10 +3,11 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package viviendadomotica;
+package Domotica;
 
 import java.time.LocalDate;
 import java.time.LocalTime;
+import viviendadomotica.Reloj;
 
 /**
  *
@@ -31,7 +32,7 @@ public class Centralita {
         id = id;
     }
     
-    public void ejecutarOrden(Comando comando) {
+   public void ejecutarOrden(viviendadomotica.Comando comando) {
 
         switch (comando) {
 
@@ -45,100 +46,117 @@ public class Centralita {
                 Reloj.setHora(LocalTime.NOON);
                 break;
             case CONSULTAR_PUERTA_GARAJE:
-                
+                consutarPuertaGaraje();
                 break;
             case ABRIR_PUERTA_GARAJE:
-
+                abrirGaraje();
                 break;
             case CERRAR_PUERTA_GARAJE:
-
+                cerrarGaraje();
                 break;
             case CONSULTAR_PERSIANA_SALON:
-                
+                consutarPersianaSalon();
                 break;
 
             case SUBIR_PERSIANA_SALON:
+                subirPersianaSalon();
                 break;
 
             case BAJAR_PERSIANA_SALON:
+                bajarPersianaSalon();
                 break;
 
             case CONSULTAR_LUZ_SALON:
+                consutarLuzSalon();
                 break;
 
             case ENCENDER_LUZ_SALON:
+                encenderLuzSalon();
                 break;
 
             case APAGAR_LUZ_SALON:
-                
+                apagarLuzSalon();
                 break;
 
             case CONSULTAR_CAMARA_SALON:
+                consutarCamaraSalon();
                 break;
 
             case ENCENDER_CAMARA_SALON:
+                encenderCamaraSalon();
                 break;
 
             case APAGAR_CAMARA_SALON:
-                
+                apagarCamaraSalon();
                 break;
             case CONSULTAR_PERSIANA_DORMITORIO:
-                
+                consutarPersianaDormitorio();
                 break;
             case SUBIR_PERSIANA_DORMITORIO:
-                
+                subirPersianaDormitorio();
                 break;
             case BAJAR_PERSIANA_DORMITORIO:
-                
+                bajarPersianaDormitorio();
                 break;
             case CONSULTAR_CAMARA_DORMITORIO:
-                
+                consutarCamaraDormitorio();
                 break;
             case ENCENDER_CAMARA_DORMITORIO:
-                
+                encenderCamaraDormitorio();
                 break;
-                
+
             case APAGAR_CAMARA_DORMITORIO:
-                
+                apagarCamaraDormitorio();
                 break;
             case CONSULTAR_LUZ_DORMITORIO:
-                
+                consutarLuzDormitorio();
                 break;
             case ENCENDER_LUZ_DORMITORIO:
-                
+                encenderLuzDormitorio();
                 break;
-   
-            case APAGAR_LUZ_DORMITORIO:
 
+            case APAGAR_LUZ_DORMITORIO:
+                apagarLuzDormitorio();
                 break;
 
             case CONSULTAR_PERSIANA_DESPACHO:
+                consutarPersianaDespacho();
                 break;
             case SUBIR_PERSIANA_DESPACHO:
+                subirPersianaDespacho();
                 break;
             case BAJAR_PERSIANA_DESPACHO:
+                bajarPersianaDespacho();
                 break;
             case CONSULTAR_CAMARA_DESPACHO:
+                consutarCamaraDespacho();
                 break;
             case ENCENDER_CAMARA_DESPACHO:
+                encenderCamaraDespacho();
                 break;
             case APAGAR_CAMARA_DESPACHO:
+                apagarCamaraDespacho();
                 break;
             case CONSULTAR_LUZ_DESPACHO:
+                consutarLuzDespacho();
                 break;
             case ENCENDER_LUZ_DESPACHO:
+                encenderLuzDespacho();
                 break;
             case APAGAR_LUZ_DESPACHO:
+                apagarLuzDespacho();
                 break;
             case APAGADO_GENERAL:
+                apagadoGeneral();
                 break;
             case APAGADO_ECO:
+                apagadoEco();
+
                 break;
 
         }
 
     }
-
     
     public boolean comprobarUsuario(Usuario aux){
         
