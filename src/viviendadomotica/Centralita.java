@@ -3,43 +3,41 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package Domotica;
+package src.viviendadomotica;
 
 import java.time.LocalDate;
 import java.time.LocalTime;
-import viviendadomotica.Reloj;
-import viviendadomotica.Salon;
-import viviendadomotica.Usuario;
 
 /**
  *
  * @author Jesus
  */
 public class Centralita {
-    
-    private static Garaje garaje;
-    private static Salon salon;
-    private static Dormitorio dormitorio;
-    private static Usuario user;
-    private static LocalDate fechaInstalacion;
-    
-    private String id;   
+
+    private Garaje garaje;
+    private Salon salon;
+    private Dormitorio dormitorio;
+    private Despacho despacho;
+    private Usuario user;
+    private LocalDate fechaInstalacion;
+
+    private String id;
 
     public Centralita() {
         garaje = new Garaje();
         salon = new Salon();
+        despacho = new Despacho();
         dormitorio = new Dormitorio();
         user = new Usuario("Jesus", "123J");
-        fechaInstalacion = fechaInstalacion;
-        id = id;
+        fechaInstalacion = LocalDate.now();
+        id = "10001";
     }
-    
-   public void ejecutarOrden(viviendadomotica.Comando comando) {
+
+    public void ejecutarOrden(Comando comando) {
 
         switch (comando) {
 
             case APAGAR_SISTEMA:
-
                 break;
             case CONSULTAR_HORA:
                 Reloj.getHora();
@@ -51,7 +49,7 @@ public class Centralita {
                 consutarPuertaGaraje();
                 break;
             case ABRIR_PUERTA_GARAJE:
-                abrirGaraje();
+                abrirGaraje(garaje.getPuerta());
                 break;
             case CERRAR_PUERTA_GARAJE:
                 cerrarGaraje();
@@ -59,19 +57,15 @@ public class Centralita {
             case CONSULTAR_PERSIANA_SALON:
                 consutarPersianaSalon();
                 break;
-
             case SUBIR_PERSIANA_SALON:
                 subirPersianaSalon();
                 break;
-
             case BAJAR_PERSIANA_SALON:
                 bajarPersianaSalon();
                 break;
-
             case CONSULTAR_LUZ_SALON:
                 consutarLuzSalon();
                 break;
-
             case ENCENDER_LUZ_SALON:
                 encenderLuzSalon();
                 break;
@@ -83,11 +77,9 @@ public class Centralita {
             case CONSULTAR_CAMARA_SALON:
                 consutarCamaraSalon();
                 break;
-
             case ENCENDER_CAMARA_SALON:
                 encenderCamaraSalon();
                 break;
-
             case APAGAR_CAMARA_SALON:
                 apagarCamaraSalon();
                 break;
@@ -106,7 +98,6 @@ public class Centralita {
             case ENCENDER_CAMARA_DORMITORIO:
                 encenderCamaraDormitorio();
                 break;
-
             case APAGAR_CAMARA_DORMITORIO:
                 apagarCamaraDormitorio();
                 break;
@@ -116,11 +107,9 @@ public class Centralita {
             case ENCENDER_LUZ_DORMITORIO:
                 encenderLuzDormitorio();
                 break;
-
             case APAGAR_LUZ_DORMITORIO:
                 apagarLuzDormitorio();
                 break;
-
             case CONSULTAR_PERSIANA_DESPACHO:
                 consutarPersianaDespacho();
                 break;
@@ -153,14 +142,13 @@ public class Centralita {
                 break;
             case APAGADO_ECO:
                 apagadoEco();
-
                 break;
 
         }
 
     }
-    
-       //MÉTODOS PARA EL SALON
+
+    //MÉTODOS PARA EL SALON
     //LUCES
     public void encenderLuzSalon() {
         if (!salon.getLuz().isEstado()) {
@@ -208,6 +196,15 @@ public class Centralita {
 
     //CAMARAS
     public void encenderCamaraSalon() {
+        if (LocalTime.now().getHour() > 20 && LocalTime.now().getHour() < 8 && salon.getLuz().isEstado() == false) {
+            salon.getLuz().setEstado(true);
+            System.out.println("Luz encendida automaticamente");
+        }
+
+        if (LocalTime.now().getHour() > 8 && LocalTime.now().getHour() < 18 && salon.getPersiana().isEstado() == 0) {
+            salon.getLuz().setEstado(true);
+        }
+
         if (!this.salon.getCamara().isEstado()) {
             this.salon.getCamara().setEstado(true);
             System.out.println("Cámara del salon encendida");
@@ -273,6 +270,16 @@ public class Centralita {
 
     //CAMARAS
     public void encenderCamaraDormitorio() {
+
+        if (LocalTime.now().getHour() > 20 && LocalTime.now().getHour() < 8 && dormitorio.getLuz().isEstado() == false) {
+            dormitorio.getLuz().setEstado(true);
+            System.out.println("Luz encendida automaticamente");
+        }
+
+        if (LocalTime.now().getHour() > 8 && LocalTime.now().getHour() < 18 && dormitorio.getPersiana().isEstado() == 0) {
+            dormitorio.getLuz().setEstado(true);
+        }
+
         if (!this.dormitorio.getCamara().isEstado()) {
             this.dormitorio.getCamara().setEstado(true);
             System.out.println("Cámara del dormitorio encendida");
@@ -356,10 +363,11 @@ public class Centralita {
     }
 
     //GARAJE
-    public void abrirGaraje() {
+    public void abrirGaraje(PuertaAutomatica aux) {
         if (!garaje.getPuerta().isEstado()) {
             garaje.getPuerta().setEstado(true);
             System.out.println("Puerta del garaje abierta");
+
         }
     }
 
@@ -372,24 +380,6 @@ public class Centralita {
 
     public void consutarPuertaGaraje() {
         System.out.println("La puerta del garaje está " + garaje.getPuerta().isEstado());
-    }
-
-    //METODOS HORAS
-    public void consultarHora() {
-
-    }
-
-    public void modificarHora() {
-
-    }
-
-    //MÉTODOS FECHA
-    public void consultarFecha() {
-
-    }
-
-    public void modificarFecha() {
-
     }
 
     //MÉTODOS GENERALLES
@@ -429,11 +419,11 @@ public class Centralita {
         return user.equals(aux);
     }
 
-    public viviendadomotica.Garaje getGaraje() {
+    public Garaje getGaraje() {
         return garaje;
     }
 
-    public void setGaraje(viviendadomotica.Garaje garaje) {
+    public void setGaraje(Garaje garaje) {
         garaje = garaje;
     }
 
@@ -445,11 +435,11 @@ public class Centralita {
         salon = salon;
     }
 
-    public viviendadomotica.Dormitorio getDormitorio() {
+    public Dormitorio getDormitorio() {
         return dormitorio;
     }
 
-    public void setDormitorio(viviendadomotica.Dormitorio dormitorio) {
+    public void setDormitorio(Dormitorio dormitorio) {
         dormitorio = dormitorio;
     }
 
@@ -481,7 +471,5 @@ public class Centralita {
     public String toString() {
         return "Centralita{" + "garaje=" + garaje + ", salon=" + salon + ", dormitorio=" + dormitorio + ", user=" + user + ", fechaInstalacion=" + fechaInstalacion + ", id=" + id + '}';
     }
-    
-    
-    
+
 }
